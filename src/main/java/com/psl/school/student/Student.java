@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Student {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	private int rollNo;
 	private String name;
 	
