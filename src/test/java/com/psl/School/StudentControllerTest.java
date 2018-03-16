@@ -84,6 +84,26 @@ public class StudentControllerTest {
 		assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
 		
 	}
+	
+	@Test
+	public void deleteStudentTest() throws Exception
+	{
+		Student mockStudent=new Student(1,"Priyanka");
+		
+		Mockito.doAnswer(new Answer<Student>() {
+			
+			@Override
+			public Student answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		}).when(studentServices).deleteStudent(Mockito.anyInt());
+		
+		RequestBuilder requestBuilder=MockMvcRequestBuilders.delete("/students/{id}",mockStudent.getRollNo()).accept(MediaType.APPLICATION_JSON);
+		
+		MvcResult mvcResult=mockMvc.perform(requestBuilder).andReturn();
+		
+		assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
+	}
 
 }
 
