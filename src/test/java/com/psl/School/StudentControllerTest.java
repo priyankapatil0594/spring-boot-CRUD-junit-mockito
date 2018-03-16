@@ -104,6 +104,18 @@ public class StudentControllerTest {
 		
 		assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
 	}
+	
+	@Test
+	public void updateStudentTest()
+	{
+		Mockito.doAnswer(new Answer<Student>() {
+			@Override
+			public Student answer(InvocationOnMock invocation) throws Throwable {
+				
+				return null;
+			}
+		}).when(studentServices);
+	}
 
 }
 
