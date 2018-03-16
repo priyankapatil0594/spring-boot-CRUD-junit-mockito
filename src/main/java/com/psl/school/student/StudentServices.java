@@ -28,7 +28,7 @@ public class StudentServices {
 		studentRepository.delete(id);
 	}
 
-	public void deleteStudent(int id, Student student) {
+	public void updateStudent(int id, Student student) {
 		
 		for (Student student1 : getAllStudents()) {
 			if(student1.getRollNo()==id)

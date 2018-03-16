@@ -38,7 +38,7 @@ public class StudentController {
 
 	@RequestMapping(method=RequestMethod.PUT,path="/students/{id}")
 	public void updateStudent(@PathVariable("id") int id,@RequestBody Student student){
-		studentServices.deleteStudent(id, student);
+		studentServices.updateStudent(id, student);
 	}
 	
 }

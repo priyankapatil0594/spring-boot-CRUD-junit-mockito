@@ -106,7 +106,7 @@ public class StudentControllerTest {
 	}
 	
 	@Test
-	public void updateStudentTest()
+	public void updateStudentTest() throws Exception
 	{
 		Mockito.doAnswer(new Answer<Student>() {
 			@Override
@@ -114,8 +114,18 @@ public class StudentControllerTest {
 				
 				return null;
 			}
-		}).when(studentServices);
+		}).when(studentServices).updateStudent(Mockito.anyInt(),Mockito.any(Student.class));
+		
+		Student s=new Student(1,"priyanka");
+		String update = "{\"name\":\"palak\"}";
+		RequestBuilder builder= MockMvcRequestBuilders.put("/students/{id}",s.getRollNo()).accept(MediaType.APPLICATION_JSON).content(update).contentType(MediaType.APPLICATION_JSON);
+		
+		MvcResult result=mockMvc.perform(builder).andReturn();
+		
+		assertEquals(HttpStatus.OK.value(),result.getResponse().getStatus());
 	}
+	
+
 
 }
 
